@@ -6,7 +6,7 @@ public class MinMusicCmdLine
     {
         MinMusicCmdLine mini = new MinMusicCmdLine();
         if(args.length<2)
-            System.out.println("Dont forget the instruments and note args");
+            System.out.println("Dont forget the instrument and note args");
         else
         {
             int instrument = Integer.parseInt(args[0]);
