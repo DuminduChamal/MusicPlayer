@@ -69,10 +69,6 @@ public class MiniMusicPlayer
 
 class MyDrawPanel extends JPanel implements ControllerEventListener
 {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     boolean msg = false;
     public void controlChange(ShortMessage event)
     {
