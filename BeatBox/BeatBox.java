@@ -1,8 +1,5 @@
 import java.awt.*;
 import javax.swing.*;
-
-import javafx.event.ActionEvent;
-
 import javax.sound.midi.*;
 import java.util.*;
 import java.awt.event.*;
@@ -21,7 +18,9 @@ public class BeatBox
 
     public static void main(String[] args)
     {
-        new BeatBox2.buildGUI();
+        // new BeatBox().buildGUI();
+        BeatBox beatbox = new BeatBox();
+        beatbox.buildGUI();
     }
 
     public void buildGUI()
@@ -129,7 +128,7 @@ public class BeatBox
         try
         {
             sequencer.setSequence(seq);
-            sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
+            sequencer.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);
             sequencer.start();
             sequencer.setTempoInBPM(120);
         }
