@@ -3,10 +3,7 @@ import javax.swing.*;
 import javax.sound.midi.*;
 import java.util.*;
 import java.awt.event.*;
-import java.io.FileOutputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamClass;
+import java.io.*;
 
 public class BeatBox
 {
@@ -59,7 +56,7 @@ public class BeatBox
         buttonBox.add(save);
 
         JButton restore = new JButton("Restore");
-        restore.addActionListener(new MyReadTempoListner());
+        restore.addActionListener(new MyReadListner());
         buttonBox.add(restore);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
@@ -205,6 +202,36 @@ public class BeatBox
             {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public class MyReadListner implements ActionListener
+    {
+        public void actionPerformed(ActionEvent a)
+        {
+            boolean[] checkBoxState =null;
+            try
+            {
+                FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
+                ObjectInputStream is = new ObjectInputStream(fileIn);
+                checkBoxState = (boolean[]) is.readObject();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            for(int i =0; i<256; i++)
+            {
+                JCheckBox check = (JCheckBox) checkBoxList.get(i);
+                if(checkBoxState[i])    
+                    check.setSelected(true);
+                else
+                    check.setSelected(false);
+            }
+
+            sequencer.stop();
+            buildTrackAndStart();
         }
     }
 
