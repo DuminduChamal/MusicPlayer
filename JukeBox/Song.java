@@ -5,9 +5,9 @@ class Song implements Comparable<Song>
     String rating;
     String bpm;
 
-    public int compareTo(Song a)
+    public int compareTo(Song s)
     {
-        return title.compareTo(s.getTitle);
+        return title.compareTo(s.getTitle());
     }
 
     Song(String t, String a, String r, String b)
