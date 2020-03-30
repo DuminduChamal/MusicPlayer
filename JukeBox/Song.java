@@ -10,6 +10,17 @@ class Song implements Comparable<Song>
         return title.compareTo(s.getTitle());
     }
 
+    public boolean equals(Object aSong) 
+    {
+        Song s = (Song)aSong;
+        return getTitle().equals(s.getTitle());
+    }
+
+    public int hashCode()
+    {
+        return title.hashCode();
+    }
+    
     Song(String t, String a, String r, String b)
     {
         title=t;
